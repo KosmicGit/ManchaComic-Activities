@@ -1,0 +1,90 @@
+{
+    "03-10-2025": {
+      "day": "Viernes",
+      "activities": [
+        {
+          "time": "17:00-18:00",
+          "type": "Charla",
+          "title": "Introducción al Manga",
+          "location": {
+            "room": "Sala 1",
+            "venue": "Antiguo Casino"
+          },
+          "organizer": "Asociación Cultural Manga",
+          "image": "https://s1.elespanol.com/2022/02/02/actualidad/647196146_221566669_1024x576.jpg"
+        },
+        {
+          "time": "18:00-19:30",
+          "type": "Juegos de Mesa",
+          "title": "Torneo de Carcassonne",
+          "location": {
+            "room": "Jardines del Prado",
+            "venue": "Jardines del Prado"
+          },
+          "organizer": "Club de Juegos Ciudad Real"
+        },
+        {
+          "time": "19:30-20:30",
+          "type": "Charla",
+          "title": "Torneo de Carcassonne",
+          "location": {
+            "room": "Jardines del Prado",
+            "venue": "Jardines del Prado"
+          },
+          "organizer": "Club de Juegos Ciudad Real"
+        }
+      ]
+    },
+    "04-10-2025": {
+      "day": "Sabado",
+      "activities": [
+        {
+          "time": "10:00-12:00",
+          "type": "Taller",
+          "title": "Taller de pintura de miniaturas",
+          "location": {
+            "room": "Sala 2",
+            "venue": "Antiguo Casino"
+          },
+          "organizer": "Talleristas del Mancha Cómic",
+          "image": "https://s1.elespanol.com/2022/02/02/actualidad/647196146_221566669_1024x576.jpg"
+        },
+        {
+          "time": "12:00-14:00",
+          "type": "Rol/Escape Room",
+          "title": "Escape Room: La maldición de la Cueva",
+          "location": {
+            "room": "Cueva Sala 1",
+            "venue": "Antiguo Casino"
+          },
+          "organizer": "Master Rol Ciudad Real"
+        }
+      ]
+    },
+    "05-10-2025": {
+      "day": "Domingo",
+      "activities": [
+        {
+          "time": "10:00-12:00",
+          "type": "Wargames",
+          "title": "Demostración de Warhammer",
+          "location": {
+            "room": "Sala 3",
+            "venue": "Antiguo Casino"
+          },
+          "organizer": "Wargames Mancha"
+        },
+        {
+          "time": "16:00-18:00",
+          "type": "Charla",
+          "title": "La historia de los cómics",
+          "location": {
+            "room": "Sala 4",
+            "venue": "Antiguo Casino"
+          },
+          "organizer": "Expertos en Cómics Ciudad Real"
+        }
+      ]
+    }
+  }
+  
