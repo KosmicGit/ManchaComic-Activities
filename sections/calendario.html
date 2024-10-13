@@ -1,7 +1,27 @@
 <div class="d-flex flex-row-reverse bd-highlight">
-    <div class="p-2 bd-highlight"><button type="button" class="btn btn-warning"><i class="bi bi-pencil-square"></i> Editar Eventos</button></div>
+    <div class="p-2 bd-highlight"><button data-bs-toggle="modal" data-bs-target="#modalBox" type="button" class="btn btn-warning"><i class="bi bi-pencil-square"></i> Editar Eventos</button></div>
     <div class="p-2 bd-highlight"><button id="addEvent" type="button" class="btn btn-primary"><i class="bi bi-file-earmark-plus"></i> Añadir Evento</button></div>
 </div>
+
+<div class="modal fade" id="modalBox" tabindex="-1" role="dialog" aria-labelledby="modalBox" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Introduce la contraseña para continuar</h5>
+            </div>
+            <div class="modal-body">
+                <input type="password" id="formPasswd" class="form-control" placeholder="Contraseña">
+                <div id="error-msg" class="text-danger" style="display: none;">Contraseña incorrecta. Inténtalo de nuevo.</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button id="btnPasswd" type="button" class="btn btn-primary"><i class="bi bi-lock-fill"></i> Entrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div class="container mt-4">
     <div id="calendar-container" class="row">
         <!-- Eventos -->

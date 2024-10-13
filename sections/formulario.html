@@ -1,52 +1,89 @@
 <div class="d-flex flex-row bd-highlight">
-  <div class="p-2 bd-highlight"><button id="closeForm" type="button" class="btn btn-danger"><i class="bi bi-backspace-fill"></i> Cerrar</button></div>
+  <div class="p-2 bd-highlight">
+    <button id="closeForm" type="button" class="btn btn-danger">
+      <i class="bi bi-backspace-fill"></i> Cerrar
+    </button>
+  </div>
 </div>
 <div class="container mt-5">
   <div class="card p-4">
     <h5 class="card-title">Añadir Evento</h5>
-    <form class="row g-3">
+    <form class="row g-3" id="eventForm">
       <div class="col-md-6">
-        <label for="inputEmail4" class="form-label">Titulo</label>
-        <input type="email" class="form-control" id="inputEmail4">
-      </div>
-      <div class="col-md-6">
-        <label for="inputPassword4" class="form-label">Password</label>
-        <input type="password" class="form-control" id="inputPassword4">
-      </div>
-      <div class="col-12">
-        <label for="inputAddress" class="form-label">Address</label>
-        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-      </div>
-      <div class="col-12">
-        <label for="inputAddress2" class="form-label">Address 2</label>
-        <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+        <label for="inputTitle" class="form-label">Título del Evento</label>
+        <input type="text" class="form-control" id="inputTitle" required>
       </div>
       <div class="col-md-6">
-        <label for="inputCity" class="form-label">City</label>
-        <input type="text" class="form-control" id="inputCity">
-      </div>
-      <div class="col-md-4">
-        <label for="inputState" class="form-label">State</label>
-        <select id="inputState" class="form-select">
-          <option selected>Choose...</option>
-          <option>...</option>
+        <label for="inputDate" class="form-label">Fecha</label>
+        <select id="inputDate" class="form-select" required>
+          <option selected>Elige un Día</option>
+          <option value="2025-10-03">03/10/2025</option>
+          <option value="2025-10-04">04/10/2025</option>
+          <option value="2025-10-05">05/10/2025</option>
         </select>
       </div>
-      <div class="col-md-2">
-        <label for="inputZip" class="form-label">Zip</label>
-        <input type="text" class="form-control" id="inputZip">
+      <div class="col-md-6">
+        <label for="inputTime" class="form-label">Hora</label>
+        <select id="inputTime" class="form-select" required>
+          <option selected>Elige una Hora</option>
+          <option value="10:00">10:00</option>
+          <option value="11:00">11:00</option>
+          <option value="12:00">12:00</option>
+          <option value="13:00">13:00</option>
+          <option value="14:00">14:00</option>
+          <option value="15:00">15:00</option>
+          <option value="16:00">16:00</option>
+          <option value="17:00">17:00</option>
+          <option value="18:00">18:00</option>
+          <option value="19:00">19:00</option>
+          <option value="20:00">20:00</option>
+          <option value="21:00">21:00</option>
+          <option value="22:00">22:00</option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label for="inputActivityType" class="form-label">Tipo de Actividad</label>
+        <select id="inputActivityType" class="form-select" required>
+          <option selected>Elige un tipo de actividad</option>
+          <option value="charlas">Charlas</option>
+          <option value="talleres">Talleres</option>
+          <option value="juegos">Juegos de mesa</option>
+          <option value="wargames">Wargames</option>
+          <option value="rol">Rol/Escape Room</option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label for="inputLocation" class="form-label">Lugar</label>
+        <select id="inputLocation" class="form-select" required>
+          <option selected>Elige un lugar</option>
+          <option value="jardines">Jardines del Prado</option>
+          <option value="casino">Antiguo Casino</option>
+          <option value="cueva">Cueva</option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label for="inputRoom" class="form-label">Sala</label>
+        <select id="inputRoom" class="form-select" required>
+          <option selected>Elige una sala</option>
+          <option value="sala1">Sala 1</option>
+          <option value="sala2">Sala 2</option>
+          <option value="sala3">Sala 3</option>
+          <option value="sala4">Sala 4</option>
+          <option value="sala5">Sala 5</option>
+          <option value="sala6">Sala 6</option>
+          <option value="sala7">Sala 7</option>
+          <option value="sala8">Sala 8</option>
+          <option value="sala9">Sala 9</option>
+          <option value="sala10">Sala 10</option>
+        </select>
       </div>
       <div class="col-12">
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="gridCheck">
-          <label class="form-check-label" for="gridCheck">
-            Check me out
-          </label>
-        </div>
-      </div>
-      <div class="col-12">
-        <button type="submit" class="btn btn-primary">Sign in</button>
+        <button type="submit" class="btn btn-primary">Añadir Actividad</button>
       </div>
     </form>
   </div>
 </div>
+<div class="container mt-5">
+  <img src="image.jpg" alt="Imagen representativa" class="img-fluid">
+</div>
+
