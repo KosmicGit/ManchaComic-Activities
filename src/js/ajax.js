@@ -4,7 +4,7 @@
 
 import * as bootstrap from 'bootstrap';
 import { loadCalendarData } from './calendar.js';
-//import { loadForm } from "./form.js";
+import { loadForm } from "./form.js";
 
 document.addEventListener("DOMContentLoaded", function() {
   const navLinks = document.querySelectorAll('.nav-link');
@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function() {
             event.preventDefault();
             loadSection('sections/calendario.html');
           });
-          //loadForm();
+          loadForm();
         }
 
         if (sectionFile.includes('creditos.html')) {

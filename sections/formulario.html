@@ -45,8 +45,8 @@
         <label for="inputActivityType" class="form-label">Tipo de Actividad</label>
         <select id="inputActivityType" class="form-select" required>
           <option selected>Elige un tipo de actividad</option>
-          <option value="charlas">Charlas</option>
-          <option value="talleres">Talleres</option>
+          <option value="charla">Charla</option>
+          <option value="taller">Taller</option>
           <option value="juegos">Juegos de mesa</option>
           <option value="wargames">Wargames</option>
           <option value="rol">Rol/Escape Room</option>
@@ -77,8 +77,16 @@
           <option value="sala10">Sala 10</option>
         </select>
       </div>
+      <div class="col-md-6">
+        <label for="inputOrganizer" class="form-label">Organizador</label>
+        <input type="text" class="form-control" id="inputOrganizer" required>
+      </div>
+      <div class="col-md-6">
+        <label for="inputImage" class="form-label">Imagen</label>
+        <input placeholder="URL de la imagen del evento" type="text" class="form-control" id="inputImage" required>
+      </div>
       <div class="col-12">
-        <button type="submit" class="btn btn-primary">Añadir Actividad</button>
+        <button type="button" class="btn btn-primary">Añadir Evento</button>
       </div>
     </form>
   </div>
@@ -86,4 +94,3 @@
 <div class="container mt-5">
   <img src="image.jpg" alt="Imagen representativa" class="img-fluid">
 </div>
-
