@@ -4,5 +4,30 @@
             <i class="bi bi-backspace-fill"></i> Cerrar
         </button>
     </div>
+    <div class="p-2 ms-auto bd-highlight"> <!-- ms-auto empuja este botón hacia la derecha -->
+        <button data-bs-toggle="modal" data-bs-target="#modalBox" type="button" class="btn btn-warning">
+            <i class="bi bi-trash"></i> Eliminar todo
+        </button>
+    </div>
 </div>
+
+<div class="modal fade" id="modalBox" tabindex="-1" role="dialog" aria-labelledby="modalBox" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">¿Estás seguro que quieres continuar?</h5>
+            </div>
+            <div class="modal-body">
+                <p>Esto eliminará todos los eventos.</p>
+                <div id="error-msg" class="text-danger" style="display: none;">Algo salió mal. Inténtalo de nuevo.</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button id="confirmDelete" type="button" class="btn btn-danger"><i class="bi bi-exclamation-circle-fill"></i> Eliminar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <h3>En construcción</h3>

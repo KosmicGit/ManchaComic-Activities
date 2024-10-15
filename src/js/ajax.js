@@ -51,6 +51,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
         if (sectionFile.includes('editar.html')) {
           const closeForm = document.getElementById('closeForm');
+          const modal = document.getElementById('modalBox');
+          const modalBox = new bootstrap.Modal(modal);
+
           closeForm.addEventListener('click', function(event) {
             event.preventDefault();
             loadSection('sections/calendario.html');
