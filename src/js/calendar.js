@@ -70,7 +70,7 @@ export function loadCalendarData() {
               <strong>Tipo:</strong> ${activity.type}<br>
               <strong>Ubicación:</strong> ${activity.location.room} - ${activity.location.venue}<br>
               <strong>Organizador:</strong> ${activity.organizer}
-            `;
+      `;
 
       cardBody.appendChild(cardTitle);
       cardBody.appendChild(cardText);
