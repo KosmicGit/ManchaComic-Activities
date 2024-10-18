@@ -1,5 +1,6 @@
 import Toastify from 'toastify-js';
 import * as bootstrap from "bootstrap";
+import {loadSection} from "./ajax.js";
 
 export function loadForm() {
     const inputTitle = document.getElementById('inputTitle');
@@ -12,6 +13,8 @@ export function loadForm() {
     const inputImage = document.getElementById('inputImage');
 
     const closeForm = document.getElementById('closeForm');
+
+    const formBox = document.getElementById('formBox');
 
     closeForm.addEventListener('click', function(event) {
         event.preventDefault();
@@ -196,9 +199,6 @@ export function loadForm() {
         const room = inputRoom.value;
         const organizer = inputOrganizer.value;
 
-        const form = document.getElementById('formBox');
-        const formBox = new bootstrap.Modal(form);
-
         [inputTitle, inputDate, inputTime, inputActivityType, inputLocation, inputRoom, inputOrganizer].forEach(input => {
             input.classList.remove('is-invalid');
         });
@@ -304,7 +304,10 @@ export function loadForm() {
         localStorage.setItem('eventsData', JSON.stringify(eventsData));
 
         showNotification("Evento añadido con éxito");
-        formBox.hide();
 
+        formBox.classList.remove('show');
+        document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
+
+        loadSection('sections/editar.html');
     });
 }

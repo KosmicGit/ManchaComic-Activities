@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
           closeEdit.addEventListener('click', function(event) {
             event.preventDefault();
-            loadSection('sections/calendario.html');
+            location.reload();
           });
 
           showForm.addEventListener('click', function(event) {
