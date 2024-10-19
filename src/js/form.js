@@ -307,6 +307,10 @@ export function loadForm() {
 
         formBox.classList.remove('show');
         document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
+        document.body.removeAttribute('style');
+        document.body.removeAttribute('class');
+        document.body.removeAttribute('data-bs-overflow');
+        document.body.removeAttribute('data-bs-padding-right');
 
         loadSection('sections/editar.html');
     });

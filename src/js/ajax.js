@@ -39,6 +39,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 modalBox.hide();
                 errorMsg.style.display = 'none';
                 document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
+                document.body.removeAttribute('style');
+                document.body.removeAttribute('class');
+                document.body.removeAttribute('data-bs-overflow');
+                document.body.removeAttribute('data-bs-padding-right');
                 loadSection('sections/editar.html');
               } else {
                 errorMsg.style.display = 'block';
@@ -48,19 +52,19 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         if (sectionFile.includes('editar.html')) {
+          loadEdit();
+
           const closeEdit = document.getElementById('closeEdit');
           const showForm = document.getElementById('showForm');
 
           closeEdit.addEventListener('click', function(event) {
             event.preventDefault();
-            location.reload();
+            loadSection('sections/calendario.html');
           });
 
           showForm.addEventListener('click', function(event) {
             loadForm();
           });
-          loadEdit();
-
         }
 
         if (sectionFile.includes('creditos.html')) {
