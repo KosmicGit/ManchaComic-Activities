@@ -1,12 +1,10 @@
 // JGarcia 2024
 
-//import { saveLocalStorage } from "./test.js";
-
 import * as bootstrap from 'bootstrap';
 import { loadCalendarData } from './calendar.js';
 import { loadForm } from "./form.js";
-import {loadEdit} from "./edit.js";
-import modal from "bootstrap/js/src/modal.js";
+import { loadEdit } from "./edit.js";
+import { loadTables } from "./tables.js";
 
 let loadSection;
 
@@ -65,6 +63,8 @@ document.addEventListener("DOMContentLoaded", function() {
           showForm.addEventListener('click', function(event) {
             loadForm();
           });
+
+          loadTables();
         }
 
         if (sectionFile.includes('creditos.html')) {

@@ -1,2 +1,9 @@
 @import "bootstrap/scss/bootstrap";
 @import "bootstrap-icons/font/bootstrap-icons.min";
+
+.dragging {
+  opacity: 0.5;
+}
+.drop-zone {
+  background-color: #f8f9fa;
+}

@@ -25,7 +25,7 @@
             <h3>Jardines del Prado</h3>
         </div>
         <div class="col-md-4 text-end">
-            <button class="btn btn-primary">Ver Eventos</button>
+            <button class="btn btn-primary" id="showJardines">Ver Eventos</button>
         </div>
     </div>
 
@@ -36,7 +36,7 @@
             <h3>Antiguo Casino</h3>
         </div>
         <div class="col-md-4 text-end">
-            <button class="btn btn-primary">Ver Eventos</button>
+            <button class="btn btn-primary" id="showCasino">Ver Eventos</button>
         </div>
     </div>
 
@@ -47,7 +47,7 @@
             <h3>Cueva</h3>
         </div>
         <div class="col-md-4 text-end">
-            <button class="btn btn-primary">Ver Eventos</button>
+            <button class="btn btn-primary" id="showCueva">Ver Eventos</button>
         </div>
     </div>
 </div>
@@ -175,6 +175,24 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" id="addEvent">Añadir Evento</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="eventModalLabel">Eventos en <span id="modalVenue"></span></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Contenido dinámico -->
+                <div id="eventTables"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>

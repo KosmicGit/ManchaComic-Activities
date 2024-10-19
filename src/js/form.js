@@ -1,5 +1,4 @@
-import Toastify from 'toastify-js';
-import * as bootstrap from "bootstrap";
+import { showNotification } from "./main.js";
 import {loadSection} from "./ajax.js";
 
 export function loadForm() {
@@ -47,20 +46,6 @@ export function loadForm() {
     inputLocation.disabled = true;
     inputRoom.disabled = true;
     inputOrganizer.disabled = true;
-
-    function showNotification(message) {
-        Toastify({
-            text: message,
-            duration: 4000,
-            close: true,
-            gravity: "bottom",
-            position: "right",
-            stopOnFocus: true,
-            style: {
-                background: "#b11f6e",
-            },
-        }).showToast();
-    }
 
     function getAvailableHours(date) {
         const availableHours = [];
