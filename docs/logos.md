@@ -19,7 +19,7 @@ Here are the logos and their sizes for each situation
 
 * **Main Use:** For Apple Touch Icon
 
-* **Size:** 
+* **Size:** 192x192px
 
 ## Banner
 <img width="65%" src="../public/banner-2024.jpg">

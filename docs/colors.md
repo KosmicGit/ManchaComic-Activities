@@ -1,34 +1,33 @@
 # [🔙](../README.md) Colors 🖌️
 
-The use of these color codes ensures brand identity and conveys the values it stands for.
+These are the colors used in the creation of this Web Application
 
-## Color Palette
+## 1. Header and Navigation Bar
 
-| Color          | Hex Code  |
-|----------------|-----------|
-| **Primary**    | `#a36e1d` |
-| **Secundary**  | `#ffe4c4` |
-| **BackGround** | `#000000` |
+* **Navbar Color:** Using the default Bootstrap black color for the navigation bar (```navbar-dark bg-dark```).
 
-## Details of Each Color
+* **Logo/Icon Color:** The color for the **ManchaComic** logo/icon is ```#b11f6e``` (vibrant mangenta-pink).
 
-### Primary Color
+## 2. Main Content Background
 
-The primary color represents the brand's main visual identity. Use it for headings, main buttons, and key elements.
+* **Background Color:** The main content section will have a white background (```#ffffff```) to ensure clarity and readability.
 
-- **Código:** `#a36e1d`
-- **RGB:** `163, 110, 29`
-- **Uso recomendado:** Main buttons, headings.
+## 3. Footer
 
-### Secondary Color
+* **Footer Background:** The footer will have a **transparent** background, blending with the overall design and avoiding distraction.
 
-The secondary color complements the primary color and can be used in supporting elements such as secondary buttons, backgrounds, and details.
+## 4. Buttons
 
-- **Código:** `#ffe4c4`
-- **RGB:** `255, 228, 196`
-- **Uso recomendado:** Secondary buttons, iconography, details.
+* **Primary Buttons:** Use the Bootstrap ```btn-primary``` style for standard action buttons. These are typically blue by default.
 
-### Background Colors
 
-- **Código:** `#000000`
-- **RGB:** `0, 0, 0`
+* **Secondary/Black Buttons:** For buttons used to go **back** or for secondary actions, use the ```btn-secondary`` Bootstrap style, which is a lighter gray.
+
+
+* **Login Button:** For the **login** button, use the ```btn-info``` Bootstrap style, typically a light blue/aqua color for emphasis.
+
+
+* **Important Actions:** For actions requiring attention but not critical, use the ```btn-warning``` Bootstrap style, which is a bold yellow/orange color.
+
+
+* **Critical Actions:** For **dangerous** or **destructive** actions, such as deletions, use the ``btn-danger``` Bootstrap style, which is a red color to signify caution.
