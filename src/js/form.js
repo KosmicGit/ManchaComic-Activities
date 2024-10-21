@@ -219,9 +219,19 @@ export function loadForm() {
             isValid = false;
         }
 
+        if (title.length > 30) {
+            inputTitle.classList.add('is-invalid');
+            isValid = false;
+        } else if (organizer.length > 30) {
+            inputOrganizer.classList.add('is-invalid');
+            isValid = false;
+        }
+
         if (!isValid) {
             if (room === 'Ocupado') {
                 showNotification("No hay salas disponibles en esta ubicación");
+            } else if (title.length > 30 || organizer.length > 30) {
+                showNotification("Por favor revise los campos señalados (No puede superar los 30 caracteres)");
             } else {
                 showNotification("Por favor, rellene todos los campos obligatorios");
             }

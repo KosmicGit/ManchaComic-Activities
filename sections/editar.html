@@ -18,7 +18,6 @@
 <h2>Ubicaciones</h2>
 
 <div class="container my-4">
-    <!-- Jardines del Prado -->
     <div class="row align-items-center mb-3">
         <div class="col-md-8 d-flex align-items-center">
             <img src="/public/jardines.jpg" alt="Jardines del Prado" class="img-fluid rounded me-3" width="50%">
@@ -29,7 +28,6 @@
         </div>
     </div>
 
-    <!-- Antiguo Casino -->
     <div class="row align-items-center mb-3">
         <div class="col-md-8 d-flex align-items-center">
             <img src="/public/casino.jpg" alt="Antiguo Casino" class="img-fluid rounded me-3" width="50%">
@@ -188,8 +186,25 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <!-- Contenido dinámico -->
+                <!-- Content -->
                 <div id="eventTables"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="eventDetailsModal" tabindex="-1" aria-labelledby="eventDetailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="eventDetailsModalLabel">Detalles del Evento</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="eventDetailsModalBody">
+                <!-- Content -->
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>

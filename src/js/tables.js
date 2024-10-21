@@ -4,14 +4,38 @@ import { showNotification } from "./main.js";
 export function loadTables() {
     const eventsData = JSON.parse(localStorage.getItem('eventsData') || '{}');
 
-    const dates = ['2025-10-03', '2025-10-04', '2025-10-05'];
-    const times = {
-        '2025-10-03': { start: 17, end: 22 },
-        '2025-10-04': { start: 10, end: 22 },
-        '2025-10-05': { start: 10, end: 22 }
+    const venueRooms = {
+        'Cueva': ['Sala 1', 'Sala 2'],
+        'Antiguo Casino': ['Sala 1', 'Sala 2', 'Sala 3', 'Sala 4', 'Sala 5', 'Sala 6', 'Sala 7', 'Sala 8', 'Sala 9', 'Sala 10'],
+        'Jardines del Prado': ['Sala 1', 'Sala 2', 'Sala 3', 'Sala 4', 'Sala 5']
     };
 
+    const dates = ['2025-10-03', '2025-10-04', '2025-10-05'];
+    const times = {
+        '2025-10-03': { start: 17, end: 23 },
+        '2025-10-04': { start: 10, end: 23 },
+        '2025-10-05': { start: 10, end: 23 }
+    };
+
+    function getActivityColor(type) {
+        switch (type) {
+            case 'Charla':
+                return ['bg-primary', 'text-white'];
+            case 'Taller':
+                return ['bg-success', 'text-white'];
+            case 'Juegos de Mesa':
+                return ['bg-warning', 'text-dark'];
+            case 'Wargames':
+                return ['bg-danger', 'text-white'];
+            case 'Rol/Escape Room':
+                return ['bg-info', 'text-white'];
+            default:
+                return ['bg-light', 'text-dark'];
+        }
+    }
+
     function loadEvents(venue) {
+        const rooms = venueRooms[venue] || [];
         let tablesHtml = '';
 
         dates.forEach(date => {
@@ -19,75 +43,69 @@ export function loadTables() {
 
             tablesHtml += `<h5>${date === '2025-10-03' ? 'Viernes' : date === '2025-10-04' ? 'Sábado' : 'Domingo'} (${date}) - Horario: ${times[date].start}:00 - ${times[date].end}:00</h5>`;
 
-            tablesHtml += `<table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Hora</th>
-                                <th>Tipo</th>
-                                <th>Título</th>
-                                <th>Ubicación</th>
-                                <th>Organizador</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>`;
+            tablesHtml += `
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Hora</th>
+                            ${rooms.map(room => `<th>${room}</th>`).join('')}
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
 
             for (let hour = times[date].start; hour < times[date].end; hour++) {
                 const timeSlot = `${String(hour).padStart(2, '0')}:00 - ${String(hour + 1).padStart(2, '0')}:00`;
-                const eventInSlot = dayEvents.find(event => event.time.startsWith(`${String(hour).padStart(2, '0')}:00`));
-                if (eventInSlot) {
-                    tablesHtml += `<tr draggable="true" id="event-${date}-${eventInSlot.title.replace(/\s+/g, '-')}" data-date="${date}" data-title="${eventInSlot.title}">
-                                <td>${eventInSlot.time}</td>
-                                <td>${eventInSlot.type}</td>
-                                <td>${eventInSlot.title}</td>
-                                <td>${eventInSlot.location.room}</td>
-                                <td>${eventInSlot.organizer}</td>
-                                <td>
-                                    <button class="btn btn-danger btn-sm delete-btn" data-date="${date}" data-title="${eventInSlot.title}" data-venue="${venue}"><i class="bi bi-trash-fill"></i> Eliminar</button>
-                                </td>
-                            </tr>`;
-                } else {
-                    tablesHtml += `<tr class="drop-zone" data-date="${date}" data-hour="${timeSlot}">
-                                <td>${timeSlot}</td>
-                                <td colspan="5" class="text-center">Libre</td>
-                            </tr>`;
-                }
+
+                tablesHtml += `<tr>
+                                <td>${timeSlot}</td>`;
+
+                rooms.forEach(room => {
+                    const eventInSlot = dayEvents.find(event => event.time.startsWith(`${String(hour).padStart(2, '0')}:00`) && event.location.room === room);
+
+                    if (eventInSlot) {
+                        const [bgClass, textClass] = getActivityColor(eventInSlot.type);
+                        tablesHtml += `<td class="drop-zone" data-room="${room}" data-hour="${timeSlot}" data-date="${date}">
+                                        <div draggable="true" class="card ${bgClass} ${textClass} event-item" id="event-${date}-${eventInSlot.title.replace(/\s+/g, '-')}" data-date="${date}" data-title="${eventInSlot.title}" data-type="${eventInSlot.type}">
+                                            <div class="card-body p-2">
+                                                ${eventInSlot.title}
+                                            </div>
+                                        </div>
+                                    </td>`;
+                    } else {
+                        tablesHtml += `<td class="drop-zone" data-room="${room}" data-hour="${timeSlot}" data-date="${date}">
+                                        <div class="empty-slot">Libre</div>
+                                    </td>`;
+                    }
+                });
+
+                tablesHtml += `</tr>`;
             }
 
             tablesHtml += `</tbody>
-                    </table>`;
+                    </table>
+                </div>`;
         });
 
         document.getElementById('eventTables').innerHTML = tablesHtml;
 
-        document.querySelectorAll('.delete-btn').forEach(button => {
-            button.addEventListener('click', function () {
+        // Agrega funcionalidad de arrastrar y soltar
+        addDragAndDrop();
+
+        // Abre el modal de detalles de actividad al hacer clic en un evento
+        document.querySelectorAll('.event-item').forEach(item => {
+            item.addEventListener('click', function () {
                 const date = this.getAttribute('data-date');
                 const title = this.getAttribute('data-title');
-                const venue = this.getAttribute('data-venue');
-                deleteEvent(date, title, venue);
+                const type = this.getAttribute('data-type');
+                showEventDetails(date, title, venue, type);
             });
         });
-
-        addDragAndDrop();
-    }
-
-    function deleteEvent(date, title, venue) {
-        if (!eventsData[date]) return;
-
-        eventsData[date].activities = eventsData[date].activities.filter(event => event.title !== title);
-
-        if (eventsData[date].activities.length === 0) {
-            delete eventsData[date];
-        }
-
-        localStorage.setItem('eventsData', JSON.stringify(eventsData));
-
-        loadEvents(venue);
     }
 
     function addDragAndDrop() {
-        const draggables = document.querySelectorAll('tr[draggable="true"]');
+        const draggables = document.querySelectorAll('.event-item');
         const dropZones = document.querySelectorAll('.drop-zone');
 
         draggables.forEach(draggable => {
@@ -110,38 +128,37 @@ export function loadTables() {
                 if (draggedEvent) {
                     const newDate = dropZone.getAttribute('data-date');
                     const newHour = dropZone.getAttribute('data-hour');
+                    const newRoom = dropZone.getAttribute('data-room');
                     const oldDate = draggedEvent.getAttribute('data-date');
                     const title = draggedEvent.getAttribute('data-title');
 
-                    if (checkIfSlotIsFree(newDate, newHour)) {
-                        moveEvent(oldDate, newDate, title, newHour);
+                    if (checkIfSlotIsFree(newDate, newHour, newRoom)) {
+                        moveEvent(oldDate, newDate, title, newHour, newRoom);
                     } else {
-                        showNotification("El horario ya está ocupado");
+                        showNotification("Esta Sala ya está ocupado");
                     }
                 }
             });
         });
     }
 
-    function checkIfSlotIsFree(date, timeSlot, venue) {
+    function checkIfSlotIsFree(date, timeSlot, room) {
         const events = eventsData[date]?.activities || [];
-        return !events.some(event => event.time === timeSlot && event.location.venue === venue);
+        return !events.some(event => event.time === timeSlot && event.location.room === room);
     }
 
-    function moveEvent(oldDate, newDate, title, newHour) {
+    function moveEvent(oldDate, newDate, title, newHour, newRoom) {
         const eventToMove = eventsData[oldDate].activities.find(event => event.title === title);
         if (eventToMove) {
             eventsData[oldDate].activities = eventsData[oldDate].activities.filter(event => event.title !== title);
-
             if (eventsData[oldDate].activities.length === 0) {
                 delete eventsData[oldDate];
             }
 
-            const movedEvent = { ...eventToMove, time: newHour };
+            const movedEvent = { ...eventToMove, time: newHour, location: { ...eventToMove.location, room: newRoom } };
 
-            const dayName = getDayName(newDate);
             if (!eventsData[newDate]) {
-                eventsData[newDate] = { day: dayName, activities: [] };
+                eventsData[newDate] = { activities: [] };
             }
             eventsData[newDate].activities.push(movedEvent);
 
@@ -152,10 +169,49 @@ export function loadTables() {
         }
     }
 
-    function getDayName(date) {
-        const dayNames = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
-        const dayIndex = new Date(date).getDay();
-        return dayNames[dayIndex];
+    function showEventDetails(date, title, venue, type) {
+        const event = eventsData[date]?.activities.find(event => event.title === title);
+        if (event) {
+            const [bgClass, textClass] = getActivityColor(type);
+            const modalBody = `
+                <div class="card ${bgClass} ${textClass}">
+                    <div class="card-img">
+                        
+                    </div>
+                    <div class="card-body">
+                        <h5>${event.title}</h5>
+                        <p><strong>Hora:</strong> ${event.time}</p>
+                        <p><strong>Ubicación:</strong> ${event.location.room}, ${venue}</p>
+                        <p><strong>Organizador:</strong> ${event.organizer}</p>
+                        <button class="btn btn-danger" id="deleteEventBtn">Eliminar</button>
+                    </div>
+                </div>
+            `;
+            const modalElement = document.getElementById('eventDetailsModalBody');
+            modalElement.innerHTML = modalBody;
+
+            const modal = new bootstrap.Modal(document.getElementById('eventDetailsModal'));
+            modal.show();
+
+            document.getElementById('deleteEventBtn').addEventListener('click', () => {
+                deleteEvent(date, title, venue);
+                modal.hide();
+            });
+        }
+    }
+
+    function deleteEvent(date, title, venue) {
+        if (!eventsData[date]) return;
+
+        eventsData[date].activities = eventsData[date].activities.filter(event => event.title !== title);
+
+        if (eventsData[date].activities.length === 0) {
+            delete eventsData[date];
+        }
+
+        localStorage.setItem('eventsData', JSON.stringify(eventsData));
+
+        loadEvents(venue);
     }
 
     document.getElementById('showJardines').addEventListener('click', () => {
@@ -178,5 +234,4 @@ export function loadTables() {
         const modal = new bootstrap.Modal(document.getElementById('eventModal'));
         modal.show();
     });
-
 }
