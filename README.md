@@ -5,6 +5,8 @@
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
+Author: Jose García Aguilar @ 2ºDAW 2024
+
 ## Introduction ✨
 Web Application for the Registration of Activities and Events for ManchaComic 2025 convention, written in JavaScript under Vite.
 
