@@ -8,3 +8,32 @@
 .drop-zone {
   background-color: #f8f9fa;
 }
+
+.list-group-item {
+  background-color: transparent;
+  border: none;
+}
+
+.btn-primary {
+  background-color: #b11f6e;
+  border-color: #b11f6e;
+}
+
+.btn-primary:hover {
+  background-color: #a11a5f;
+  border-color: #a11a5f;
+}
+
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary:not(:disabled):active {
+  background-color: #b11f6e;
+  border-color: #b11f6e;
+  box-shadow: none;
+}
+
+.btn-primary:focus,
+.btn-primary:active {
+  color: #fff;
+}
+

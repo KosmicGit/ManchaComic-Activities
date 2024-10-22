@@ -8,7 +8,7 @@ export function loadCalendarData() {
         <div class="text-center">
             <h1>No hay eventos todavía.</h1>
             <br>
-            <img src='https://i.ibb.co/qpf7t3j/bg-removebg-preview.png' class='img-fluid' style='width: 45%; height: auto;' alt="Sad Dog">
+            <img src='/public/notFound.png' class='img-fluid' style='width: 45%; height: auto;' alt="Sad Dog">
         </div>
     `;
     return;

@@ -41,7 +41,7 @@ export function loadTables() {
         dates.forEach(date => {
             const dayEvents = (eventsData[date]?.activities.filter(event => event.location.venue === venue)) || [];
 
-            tablesHtml += `<h5>${date === '2025-10-03' ? 'Viernes' : date === '2025-10-04' ? 'Sábado' : 'Domingo'} (${date}) - Horario: ${times[date].start}:00 - ${times[date].end}:00</h5>`;
+            tablesHtml += `<h5>${date === '2025-10-03' ? 'Viernes' : date === '2025-10-04' ? 'Sábado' : 'Domingo'} (${date.substring(8, 10) + "-10-2025"}) - Horario: ${times[date].start}:00 - ${times[date].end}:00</h5>`;
 
             tablesHtml += `
                 <div class="table-responsive">
