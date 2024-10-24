@@ -4,6 +4,13 @@ export function loadCalendarData() {
 
   if (!eventsData) {
     console.error('No hay datos en localStorage');
+    document.getElementById('calendar-container').innerHTML = `
+        <div class="text-center">
+            <h1>No hay eventos todavía.</h1>
+            <br>
+            <img src='/public/notFound.png' class='img-fluid' style='width: 45%; height: auto;' alt="Sad Dog">
+        </div>
+    `;
     return;
   }
 
@@ -70,7 +77,7 @@ export function loadCalendarData() {
               <strong>Tipo:</strong> ${activity.type}<br>
               <strong>Ubicación:</strong> ${activity.location.room} - ${activity.location.venue}<br>
               <strong>Organizador:</strong> ${activity.organizer}
-            `;
+      `;
 
       cardBody.appendChild(cardTitle);
       cardBody.appendChild(cardText);
